@@ -34,22 +34,29 @@ export const Navbar: React.FC<NavbarProps> = ({
           className="flex items-center gap-3 group text-left focus-ring rounded-lg p-1 transition-transform active:scale-95"
           aria-label="Triple Loop Home"
         >
-          <img
-            src="/logo.png"
-            alt="Triple Loop"
-            className="h-8 sm:h-9 w-auto object-contain dark:invert transition-transform group-hover:scale-105"
-          />
+          {/* Concentric Triple Loop Squircle Badge */}
+          <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-[#38bdf8] to-[#fb7185] p-[1.5px] shadow-md shadow-sky-500/25 group-hover:shadow-sky-500/40 transition-all flex-shrink-0">
+            <div className="w-full h-full bg-[#090e17] rounded-[10px] flex items-center justify-center relative overflow-hidden">
+              {/* Outer Loop */}
+              <div className="absolute w-[24px] h-[24px] border-2 border-[#38bdf8] rounded-full animate-spin [animation-duration:9s]" />
+              {/* Middle Loop */}
+              <div className="absolute w-[16px] h-[16px] border-2 border-[#fb7185] rounded-full animate-spin [animation-duration:6s] [animation-direction:reverse]" />
+              {/* Center Dot */}
+              <div className="w-2 h-2 bg-[#38bdf8] rounded-full shadow-[0_0_8px_#38bdf8] z-10" />
+            </div>
+          </div>
           <div>
-            <div className="flex items-center gap-2.5">
-              <span className="font-display font-bold text-lg tracking-[0.16em] text-[var(--text-primary)] transition-colors">
-                TRIPLE LOOP
+            <div className="flex items-center gap-2">
+              <span className="font-extrabold text-lg tracking-tight">
+                <span className="text-[#38bdf8]">TRIPLE </span>
+                <span className="text-[#fb7185]">LOOP</span>
               </span>
-              <span className="hidden sm:inline-block text-[10px] uppercase font-display tracking-widest px-2 py-0.5 rounded border bg-[#B88931]/10 text-[#B88931] border-[#B88931]/30 dark:bg-[#8CA98F]/15 dark:text-[#8CA98F] dark:border-[#8CA98F]/30">
-                Vol. I
+              <span className="text-[10px] uppercase font-mono tracking-widest px-1.5 py-0.5 rounded border border-[#38bdf8]/35 bg-[#38bdf8]/10 text-[#38bdf8] font-bold">
+                v1.0
               </span>
             </div>
-            <p className="text-[11px] font-body text-[var(--text-muted)] italic hidden md:block -mt-0.5">
-              Three marks. One board. Never stop thinking.
+            <p className="text-[11px] text-[var(--text-muted)] hidden md:block font-medium -mt-0.5">
+              Three marks. One board.
             </p>
           </div>
         </button>
