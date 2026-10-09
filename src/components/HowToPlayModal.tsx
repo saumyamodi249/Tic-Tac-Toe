@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Sparkles, Repeat, Trophy, ShieldAlert } from 'lucide-react';
+import { X, Sparkles, Repeat, Trophy } from 'lucide-react';
 
 interface HowToPlayModalProps {
   isOpen: boolean;
