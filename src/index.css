@@ -30,10 +30,9 @@
     --player-x: #B88931;
     --player-o: #8B2635;
     --glow-x: rgba(184, 137, 49, 0.22);
-    --glow-o: rgba(139, 38, 53, 0.22);
-    --font-heading: 'Cormorant Garamond', Georgia, serif;
-    --font-display: 'Cinzel', Georgia, serif;
-    --font-body: 'Crimson Pro', Georgia, serif;
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Source Sans 3', -apple-system, sans-serif;
   }
 
   [data-theme="dark"],

@@ -19,33 +19,19 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   return (
     <div className="flex-1 flex flex-col items-center justify-center max-w-4xl mx-auto px-4 py-8 sm:py-14 space-y-10 sm:space-y-14 animate-fade-in">
       {/* Hero Section */}
-      <div className="text-center space-y-5 max-w-2xl">
-        {/* Overline Proclamation Banner */}
-        <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-[var(--border-color)] bg-[var(--bg-card)]/80 text-[var(--accent-primary)] text-xs font-display tracking-[0.22em] uppercase backdrop-blur-md shadow-sm">
-          <Sparkles className="w-3.5 h-3.5 text-[var(--accent-primary)]" />
-          <span>Volume I • Strategic Proclamation</span>
-        </div>
-
-        {/* Wordmark & Tagline */}
-        <h1 className="text-5xl sm:text-7xl font-heading font-normal tracking-tight text-[var(--text-primary)] leading-[1.05]">
-          TRIPLE{' '}
-          <span className="italic text-[var(--accent-primary)] font-serif">
-            LOOP
-          </span>
-        </h1>
-
-        <p className="text-lg sm:text-xl font-body text-[var(--text-secondary)] max-w-md mx-auto leading-relaxed">
-          Three marks. One board. <span className="italic text-[var(--text-primary)] font-medium">Never stop thinking.</span>
+      <div className="text-center space-y-4 max-w-xl">
+        <p className="text-base sm:text-lg font-heading text-[var(--text-secondary)]">
+          Three marks. One board. <span className="italic font-medium text-[var(--text-primary)]">Never stop thinking.</span>
         </p>
 
-        {/* Core Mechanic Mini Proclamation Card */}
-        <div className="p-5 sm:p-6 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] text-sm sm:text-base text-[var(--text-secondary)] max-w-xl mx-auto text-left shadow-sm relative overflow-hidden">
+        {/* Core Mechanic Card */}
+        <div className="p-5 sm:p-6 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-color)] text-xs sm:text-sm text-[var(--text-secondary)] max-w-lg mx-auto text-left shadow-sm">
           <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-xl bg-[#B88931]/15 text-[#B88931] dark:bg-[#8CA98F]/20 dark:text-[#8CA98F] flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm">
-              <Repeat className="w-5 h-5 animate-spin [animation-duration:14s]" />
+            <div className="w-10 h-10 rounded-2xl bg-[#B88931]/15 text-[#B88931] dark:bg-[#8CA98F]/20 dark:text-[#8CA98F] flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
+              <Repeat className="w-5 h-5 animate-spin [animation-duration:12s]" />
             </div>
             <div>
-              <p className="font-heading text-lg font-medium text-[var(--text-primary)] mb-1">
+              <p className="font-heading font-semibold text-[var(--text-primary)] text-base mb-1">
                 The Eternal Loop Principle
               </p>
               <p className="font-body text-xs sm:text-sm leading-relaxed text-[var(--text-secondary)]">
