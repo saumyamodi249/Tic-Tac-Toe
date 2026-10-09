@@ -23,88 +23,90 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-md animate-fade-in">
-      <div className="relative w-full max-w-md p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/15 shadow-2xl text-left space-y-6 animate-scale-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#1C1714]/60 dark:bg-[#0E1410]/80 backdrop-blur-md animate-fade-in">
+      <div className="relative w-full max-w-md p-6 sm:p-8 rounded-3xl bg-[var(--bg-modal)] border-2 border-[var(--border-color)] shadow-2xl text-left space-y-6 animate-scale-in">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-colors focus-ring"
+          className="absolute top-5 right-5 p-2 rounded-xl text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--btn-bg)] transition-colors focus-ring"
           aria-label="Close settings"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Title */}
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-sky-500/20 text-sky-600 dark:text-sky-400 flex items-center justify-center">
+        <div className="flex items-center gap-3.5">
+          <div className="w-10 h-10 rounded-2xl bg-[#B88931]/15 text-[#B88931] dark:bg-[#8CA98F]/20 dark:text-[#8CA98F] flex items-center justify-center shadow-sm">
             <Settings className="w-5 h-5" />
           </div>
           <div>
-            <h2 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">Game Settings</h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400">Personalize your game experience</p>
+            <h2 className="text-2xl font-heading font-medium text-[var(--text-primary)] tracking-tight">Hall Settings</h2>
+            <p className="text-xs font-body text-[var(--text-muted)] italic">Personalize your tactical study</p>
           </div>
         </div>
 
         {/* Settings Options */}
-        <div className="space-y-3 text-xs sm:text-sm text-slate-700 dark:text-slate-200">
+        <div className="space-y-3 text-xs sm:text-sm text-[var(--text-secondary)]">
           {/* Sound Toggle */}
-          <div className="flex items-center justify-between p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5">
+          <div className="flex items-center justify-between p-4 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs">
             <div className="flex items-center gap-3">
               {isMuted ? (
-                <VolumeX className="w-5 h-5 text-rose-500 dark:text-rose-400" />
+                <VolumeX className="w-5 h-5 text-[#8B2635] dark:text-[#D4846A]" />
               ) : (
-                <Volume2 className="w-5 h-5 text-sky-600 dark:text-sky-400" />
+                <Volume2 className="w-5 h-5 text-[#B88931] dark:text-[#8CA98F]" />
               )}
               <div>
-                <p className="font-semibold text-slate-900 dark:text-white">Audio & Sound FX</p>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400">Satisfying dynamic synthesized clicks and cues</p>
+                <p className="font-heading font-medium text-base text-[var(--text-primary)]">Audio Resonances</p>
+                <p className="text-[11px] font-body text-[var(--text-muted)] italic">Synthesized acoustic cues</p>
               </div>
             </div>
             <button
               onClick={onToggleSound}
-              className={`px-3 py-1.5 rounded-xl font-bold text-xs transition-colors focus-ring ${
+              className={`px-3.5 py-1.5 rounded-lg font-display text-xs tracking-wider uppercase transition-all focus-ring ${
                 isMuted
-                  ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-400 hover:bg-slate-300 dark:hover:bg-slate-700'
-                  : 'bg-sky-500 text-slate-950 shadow-md shadow-sky-500/20'
+                  ? 'border border-[var(--border-color)] bg-[var(--bg-secondary)] text-[var(--text-muted)] hover:border-[var(--text-primary)]'
+                  : 'brass-gradient dark:bg-[#8CA98F] dark:text-[#131914] font-semibold'
               }`}
             >
-              {isMuted ? 'Muted' : 'Enabled'}
+              {isMuted ? 'Muted' : 'Resonating'}
             </button>
           </div>
 
-          {/* Theme Toggle */}
-          <div className="flex items-center justify-between p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5">
+          {/* Theme Toggle: Academia Light vs Botanical Dark */}
+          <div className="flex items-center justify-between p-4 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs">
             <div className="flex items-center gap-3">
               {isDark ? (
-                <Moon className="w-5 h-5 text-indigo-500 dark:text-sky-400" />
+                <Moon className="w-5 h-5 text-[#8CA98F]" />
               ) : (
-                <Sun className="w-5 h-5 text-amber-500 dark:text-amber-400" />
+                <Sun className="w-5 h-5 text-[#B88931]" />
               )}
               <div>
-                <p className="font-semibold text-slate-900 dark:text-white">Appearance</p>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400">Dark aesthetic or Clean light theme</p>
+                <p className="font-heading font-medium text-base text-[var(--text-primary)]">Aesthetic Paradigm</p>
+                <p className="text-[11px] font-body text-[var(--text-muted)] italic">
+                  {isDark ? 'Botanical Night Conservatory' : 'Academia Classical Library'}
+                </p>
               </div>
             </div>
             <button
               onClick={onToggleTheme}
-              className="px-3 py-1.5 rounded-xl bg-slate-200 hover:bg-slate-300 dark:bg-white/10 dark:hover:bg-white/15 text-slate-800 dark:text-white font-bold text-xs transition-colors focus-ring"
+              className="px-3.5 py-1.5 rounded-lg border border-[var(--border-color)] bg-[var(--bg-secondary)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] font-display text-xs tracking-wider uppercase transition-all focus-ring shadow-xs"
             >
-              {isDark ? 'Dark Mode' : 'Light Mode'}
+              {isDark ? 'Botanical' : 'Academia'}
             </button>
           </div>
 
           {/* Reset Local Session */}
-          <div className="flex items-center justify-between p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5">
+          <div className="flex items-center justify-between p-4 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs">
             <div className="flex items-center gap-3">
-              <Trash2 className="w-5 h-5 text-rose-500 dark:text-rose-400" />
+              <Trash2 className="w-5 h-5 text-[#8B2635] dark:text-[#D4846A]" />
               <div>
-                <p className="font-semibold text-slate-900 dark:text-white">Reset Guest Data</p>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400">Clear cached guest ID and nickname</p>
+                <p className="font-heading font-medium text-base text-[var(--text-primary)]">Clear Ledger</p>
+                <p className="text-[11px] font-body text-[var(--text-muted)] italic">Erase cached guest pseudonym</p>
               </div>
             </div>
             <button
               onClick={onResetSession}
-              className="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 dark:bg-rose-500/10 dark:hover:bg-rose-500/20 border border-rose-200 dark:border-rose-500/30 text-rose-600 dark:text-rose-300 font-bold text-xs transition-colors focus-ring"
+              className="px-3.5 py-1.5 rounded-lg border border-[#8B2635]/30 bg-[#8B2635]/10 hover:bg-[#8B2635]/20 text-[#8B2635] dark:border-[#D4846A]/30 dark:bg-[#D4846A]/10 dark:text-[#D4846A] font-display text-xs tracking-wider uppercase transition-colors focus-ring"
             >
               Reset
             </button>
@@ -114,9 +116,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="w-full py-3 rounded-2xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-sky-500/20 focus-ring"
+          className="w-full py-3.5 rounded-xl brass-gradient dark:bg-[#8CA98F] dark:text-[#131914] font-display font-semibold text-xs tracking-wider uppercase transition-all shadow-md focus-ring"
         >
-          Done
+          Confirm & Return
         </button>
       </div>
     </div>

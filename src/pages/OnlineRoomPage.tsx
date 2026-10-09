@@ -302,14 +302,14 @@ export const OnlineRoomPage: React.FC<OnlineRoomPageProps> = ({
       <div className="flex items-center justify-between w-full">
         <button
           onClick={onReturnToMenu}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-xs font-semibold transition-colors focus-ring"
+          className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[var(--bg-card)] hover:bg-[var(--bg-secondary)] border border-[var(--border-color)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-xs font-display tracking-wider uppercase transition-colors focus-ring"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Menu</span>
         </button>
 
         {view === 'game' && activeRoom && (
-          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-[11px] font-mono text-sky-600 dark:text-sky-400">
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#B88931]/10 border border-[#B88931]/25 text-[#B88931] dark:bg-[#8CA98F]/15 dark:border-[#8CA98F]/30 dark:text-[#8CA98F] text-[11px] font-display tracking-wider uppercase">
             <span>Room: {activeRoom.code}</span>
           </div>
         )}
@@ -319,14 +319,14 @@ export const OnlineRoomPage: React.FC<OnlineRoomPageProps> = ({
 
       {/* Error Banner */}
       {errorMsg && (
-        <div className="w-full p-3.5 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-600 dark:text-rose-300 text-xs flex items-center justify-between gap-2">
+        <div className="w-full p-3.5 rounded-xl bg-[#8B2635]/10 border border-[#8B2635]/30 text-[#8B2635] dark:border-[#D4846A]/30 dark:bg-[#D4846A]/10 dark:text-[#D4846A] text-xs font-body flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 flex-shrink-0 text-rose-500 dark:text-rose-400" />
+            <AlertCircle className="w-4 h-4 flex-shrink-0" />
             <span>{errorMsg}</span>
           </div>
           <button
             onClick={() => setErrorMsg(null)}
-            className="text-slate-400 hover:text-slate-900 dark:hover:text-white text-xs font-bold"
+            className="text-[var(--text-muted)] hover:text-[var(--text-primary)] text-xs font-bold"
           >
             ✕
           </button>
@@ -337,45 +337,45 @@ export const OnlineRoomPage: React.FC<OnlineRoomPageProps> = ({
       {view === 'lobby' && (
         <div className="w-full max-w-md space-y-6 animate-scale-in my-auto">
           <div className="text-center space-y-2">
-            <div className="w-12 h-12 rounded-2xl bg-rose-500/20 text-rose-600 dark:text-rose-400 mx-auto flex items-center justify-center">
+            <div className="w-12 h-12 rounded-2xl bg-[#B88931]/15 text-[#B88931] dark:bg-[#8CA98F]/20 dark:text-[#8CA98F] mx-auto flex items-center justify-center shadow-xs">
               <Key className="w-6 h-6" />
             </div>
-            <h2 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Private Room</h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400">Play a friend anywhere via 6-character room code</p>
+            <h2 className="text-3xl font-heading font-medium text-[var(--text-primary)] tracking-tight">Private Chamber</h2>
+            <p className="text-xs font-body italic text-[var(--text-muted)]">Engage a companion peer via unique 6-character cipher</p>
           </div>
 
           <div className="space-y-4">
             {/* Create Room Card */}
-            <div className="p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-none space-y-3">
-              <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-sky-500 dark:text-sky-400" />
-                <span>Host a New Game</span>
+            <div className="p-6 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-md space-y-3">
+              <h3 className="text-sm font-heading font-semibold text-[var(--text-primary)] flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-[#B88931] dark:text-[#8CA98F]" />
+                <span>Inscribe New Chamber</span>
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
-                Generate a unique room code and share it with your opponent.
+              <p className="text-xs font-body italic text-[var(--text-muted)]">
+                Mint a dedicated room cipher and impart it to your opponent.
               </p>
               <button
                 onClick={handleCreateRoom}
                 disabled={loading}
-                className="w-full py-3 rounded-2xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-sky-500/20 focus-ring disabled:opacity-50 flex items-center justify-center gap-2"
+                className="w-full py-3.5 rounded-xl brass-gradient dark:bg-[#8CA98F] dark:text-[#131914] font-display font-semibold text-xs tracking-wider uppercase transition-all shadow-md focus-ring disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
-                <span>Create Room</span>
+                <span>Inscribe Chamber</span>
               </button>
             </div>
 
             {/* Divider */}
-            <div className="flex items-center gap-3 text-slate-400 dark:text-slate-500 text-xs font-mono">
-              <div className="flex-1 h-px bg-slate-200 dark:bg-white/10" />
+            <div className="flex items-center gap-3 text-[var(--text-muted)] text-xs font-display tracking-widest uppercase">
+              <div className="flex-1 h-px bg-[var(--border-color)]" />
               <span>OR</span>
-              <div className="flex-1 h-px bg-slate-200 dark:bg-white/10" />
+              <div className="flex-1 h-px bg-[var(--border-color)]" />
             </div>
 
             {/* Join Room Card */}
-            <div className="p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-none space-y-3">
-              <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <Users className="w-4 h-4 text-rose-500 dark:text-rose-400" />
-                <span>Join with Code</span>
+            <div className="p-6 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-md space-y-3">
+              <h3 className="text-sm font-heading font-semibold text-[var(--text-primary)] flex items-center gap-2">
+                <Users className="w-4 h-4 text-[#8B2635] dark:text-[#D4846A]" />
+                <span>Enter with Cipher</span>
               </h3>
               <div className="flex gap-2">
                 <input
@@ -383,15 +383,15 @@ export const OnlineRoomPage: React.FC<OnlineRoomPageProps> = ({
                   maxLength={6}
                   value={roomCodeInput}
                   onChange={(e) => setRoomCodeInput(e.target.value.toUpperCase())}
-                  placeholder="CODE (e.g. 7X9K2A)"
-                  className="flex-1 px-4 py-3 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-mono text-center tracking-widest text-base uppercase focus-ring"
+                  placeholder="CIPHER (e.g. 7X9K2A)"
+                  className="flex-1 px-4 py-3 rounded-xl bg-[var(--bg-input)] border border-[var(--border-color)] text-[var(--text-primary)] font-display text-center tracking-widest text-base uppercase focus-ring"
                 />
                 <button
                   onClick={() => handleJoinRoom()}
                   disabled={loading || roomCodeInput.trim().length < 4}
-                  className="px-6 py-3 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm transition-all shadow-lg shadow-rose-600/20 focus-ring disabled:opacity-50"
+                  className="px-6 py-3 rounded-xl bg-[#8B2635] hover:bg-[#A32D3F] dark:bg-[#D4846A] dark:hover:bg-[#C27B66] text-[#F6F1EA] dark:text-[#131914] font-display font-semibold text-xs tracking-wider uppercase transition-all shadow-md focus-ring disabled:opacity-50"
                 >
-                  Join
+                  Enter
                 </button>
               </div>
             </div>
@@ -401,37 +401,37 @@ export const OnlineRoomPage: React.FC<OnlineRoomPageProps> = ({
 
       {/* 2. WAITING VIEW: Waiting for guest */}
       {view === 'waiting' && activeRoom && (
-        <div className="w-full max-w-md p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-none text-center space-y-6 my-auto animate-scale-in">
-          <div className="w-14 h-14 rounded-3xl bg-sky-500/20 text-sky-500 dark:text-sky-400 mx-auto flex items-center justify-center relative">
+        <div className="w-full max-w-md p-8 sm:p-10 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xl text-center space-y-6 my-auto animate-scale-in">
+          <div className="w-14 h-14 rounded-3xl bg-[#B88931]/15 text-[#B88931] dark:bg-[#8CA98F]/20 dark:text-[#8CA98F] mx-auto flex items-center justify-center relative shadow-xs">
             <Users className="w-7 h-7" />
-            <span className="absolute -top-1 -right-1 w-4 h-4 bg-sky-400 rounded-full animate-ping" />
+            <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#B88931] dark:bg-[#8CA98F] rounded-full animate-ping" />
           </div>
 
           <div>
-            <h2 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Room Created!</h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-              Share this 6-character code with your opponent to begin.
+            <h2 className="text-3xl font-heading font-medium text-[var(--text-primary)] tracking-tight">Chamber Inscribed!</h2>
+            <p className="text-xs font-body italic text-[var(--text-muted)] mt-1.5">
+              Impart this 6-character cipher to your rival scholar to commence.
             </p>
           </div>
 
           {/* Large Code Display & Copy Action */}
-          <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-sky-500/30 flex items-center justify-between">
-            <span className="text-3xl font-black font-mono tracking-widest text-sky-500 dark:text-sky-400 pl-2">
+          <div className="p-4.5 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-color)] flex items-center justify-between">
+            <span className="text-3xl font-display font-bold tracking-widest text-[#B88931] dark:text-[#8CA98F] pl-3">
               {activeRoom.code}
             </span>
             <button
               onClick={handleCopyCode}
-              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-sky-500/15 hover:bg-sky-500/25 text-sky-600 dark:text-sky-300 font-semibold text-xs transition-colors focus-ring"
+              className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl brass-gradient dark:bg-[#8CA98F] dark:text-[#131914] font-display font-semibold text-xs tracking-wider uppercase transition-all shadow-xs focus-ring"
             >
-              {copied ? <Check className="w-4 h-4 text-emerald-500 dark:text-emerald-400" /> : <Copy className="w-4 h-4" />}
-              <span>{copied ? 'Copied!' : 'Copy'}</span>
+              {copied ? <Check className="w-4 h-4 text-emerald-900 dark:text-emerald-950" /> : <Copy className="w-4 h-4" />}
+              <span>{copied ? 'Inscribed!' : 'Transcribe'}</span>
             </button>
           </div>
 
           {/* Waiting animation */}
-          <div className="flex items-center justify-center gap-2.5 text-xs text-slate-500 dark:text-slate-400">
-            <Loader2 className="w-4 h-4 animate-spin text-sky-500 dark:text-sky-400" />
-            <span>Waiting for opponent to enter the room...</span>
+          <div className="flex items-center justify-center gap-2.5 text-xs font-body italic text-[var(--text-muted)]">
+            <Loader2 className="w-4 h-4 animate-spin text-[#B88931] dark:text-[#8CA98F]" />
+            <span>Awaiting opponent scholar entry into chamber...</span>
           </div>
         </div>
       )}

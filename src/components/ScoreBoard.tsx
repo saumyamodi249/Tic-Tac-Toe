@@ -58,39 +58,39 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
         {/* Player X Card */}
         <div
           className={`
-            relative p-3 sm:p-4 rounded-2xl border transition-all duration-300
+            relative p-3.5 sm:p-4 rounded-2xl border transition-all duration-300
             ${
               currentTurn === 'X'
-                ? 'bg-sky-50 dark:bg-sky-500/10 border-sky-300 dark:border-sky-500/40 shadow-md dark:shadow-lg shadow-sky-500/10'
-                : 'bg-white/80 dark:bg-slate-900/40 border-slate-200 dark:border-white/5 opacity-75'
+                ? 'bg-[var(--bg-card)] border-[#B88931] dark:border-[#8CA98F] shadow-md ring-1 ring-[#B88931]/30 dark:ring-[#8CA98F]/30'
+                : 'bg-[var(--bg-card)]/75 border-[var(--border-color)] opacity-80'
             }
           `}
         >
           {/* Turn Indicator Pill */}
           {currentTurn === 'X' && (
-            <div className="absolute -top-2.5 left-4 px-2 py-0.5 rounded-full bg-sky-500 text-slate-950 font-bold text-[10px] tracking-wider uppercase shadow-md shadow-sky-500/50">
+            <div className="absolute -top-2.5 left-4 px-2.5 py-0.5 rounded-full bg-[#B88931] text-[#1C1714] dark:bg-[#8CA98F] dark:text-[#131914] font-display font-semibold text-[9px] tracking-widest uppercase shadow-sm">
               Turn
             </div>
           )}
 
           <div className="flex items-center justify-between gap-2">
-            <div className="flex items-center gap-2 min-w-0">
-              <div className="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-600 dark:text-sky-400 flex items-center justify-center font-black text-sm flex-shrink-0">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className="w-8 h-8 rounded-lg bg-[#B88931]/15 text-[#B88931] dark:bg-[#8CA98F]/20 dark:text-[#8CA98F] flex items-center justify-center font-heading font-bold text-base flex-shrink-0">
                 X
               </div>
               <div className="truncate">
-                <p className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 truncate">
+                <p className="text-xs sm:text-sm font-heading font-medium text-[var(--text-primary)] truncate">
                   {playerXName}
                 </p>
                 {userPlayer === 'X' && (
-                  <span className="text-[10px] text-sky-600 dark:text-sky-400 font-mono">(You)</span>
+                  <span className="text-[10px] text-[#B88931] dark:text-[#8CA98F] font-serif italic">(You)</span>
                 )}
               </div>
             </div>
 
             {/* Active Marks Gauge */}
             <div className="flex flex-col items-end">
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1.5">
                 {[0, 1, 2].map((slot) => {
                   const isFilled = slot < xMarksCount;
                   const isOldest = slot === 0 && xMarksCount === 3;
@@ -101,10 +101,10 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                         w-2.5 h-2.5 rounded-full transition-all duration-300
                         ${
                           isOldest
-                            ? 'bg-amber-400 ring-2 ring-amber-400/50 animate-ping'
+                            ? 'bg-[#B88931] dark:bg-[#8CA98F] ring-2 ring-[#B88931]/50 dark:ring-[#8CA98F]/50 animate-ping'
                             : isFilled
-                            ? 'bg-sky-400 shadow-sm shadow-sky-400/50'
-                            : 'bg-slate-200 dark:bg-slate-700/60 border border-slate-300 dark:border-white/10'
+                            ? 'bg-[#B88931] dark:bg-[#8CA98F] shadow-sm'
+                            : 'bg-transparent border border-[var(--border-color)]'
                         }
                       `}
                       title={isOldest ? 'Oldest mark (will vanish next)' : isFilled ? 'Active mark' : 'Available slot'}
@@ -112,8 +112,8 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                   );
                 })}
               </div>
-              <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 mt-1">
-                {xMarksCount}/3 marks
+              <span className="text-[10px] font-display text-[var(--text-muted)] mt-1.5">
+                {xMarksCount}/3
               </span>
             </div>
           </div>
@@ -122,39 +122,39 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
         {/* Player O Card */}
         <div
           className={`
-            relative p-3 sm:p-4 rounded-2xl border transition-all duration-300
+            relative p-3.5 sm:p-4 rounded-2xl border transition-all duration-300
             ${
               currentTurn === 'O'
-                ? 'bg-rose-50 dark:bg-rose-500/10 border-rose-300 dark:border-rose-500/40 shadow-md dark:shadow-lg shadow-rose-500/10'
-                : 'bg-white/80 dark:bg-slate-900/40 border-slate-200 dark:border-white/5 opacity-75'
+                ? 'bg-[var(--bg-card)] border-[#8B2635] dark:border-[#D4846A] shadow-md ring-1 ring-[#8B2635]/30 dark:ring-[#D4846A]/30'
+                : 'bg-[var(--bg-card)]/75 border-[var(--border-color)] opacity-80'
             }
           `}
         >
           {/* Turn Indicator Pill */}
           {currentTurn === 'O' && (
-            <div className="absolute -top-2.5 left-4 px-2 py-0.5 rounded-full bg-rose-500 text-white font-bold text-[10px] tracking-wider uppercase shadow-md shadow-rose-500/50">
+            <div className="absolute -top-2.5 left-4 px-2.5 py-0.5 rounded-full bg-[#8B2635] text-white dark:bg-[#D4846A] dark:text-[#131914] font-display font-semibold text-[9px] tracking-widest uppercase shadow-sm">
               Turn
             </div>
           )}
 
           <div className="flex items-center justify-between gap-2">
-            <div className="flex items-center gap-2 min-w-0">
-              <div className="w-7 h-7 rounded-lg bg-rose-500/20 text-rose-600 dark:text-rose-400 flex items-center justify-center font-black text-sm flex-shrink-0">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className="w-8 h-8 rounded-lg bg-[#8B2635]/15 text-[#8B2635] dark:bg-[#D4846A]/20 dark:text-[#D4846A] flex items-center justify-center font-heading font-bold text-base flex-shrink-0">
                 O
               </div>
               <div className="truncate">
-                <p className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 truncate">
+                <p className="text-xs sm:text-sm font-heading font-medium text-[var(--text-primary)] truncate">
                   {playerOName}
                 </p>
                 {userPlayer === 'O' && (
-                  <span className="text-[10px] text-rose-600 dark:text-rose-400 font-mono">(You)</span>
+                  <span className="text-[10px] text-[#8B2635] dark:text-[#D4846A] font-serif italic">(You)</span>
                 )}
               </div>
             </div>
 
             {/* Active Marks Gauge */}
             <div className="flex flex-col items-end">
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1.5">
                 {[0, 1, 2].map((slot) => {
                   const isFilled = slot < oMarksCount;
                   const isOldest = slot === 0 && oMarksCount === 3;
@@ -165,10 +165,10 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                         w-2.5 h-2.5 rounded-full transition-all duration-300
                         ${
                           isOldest
-                            ? 'bg-amber-400 ring-2 ring-amber-400/50 animate-ping'
+                            ? 'bg-[#8B2635] dark:bg-[#D4846A] ring-2 ring-[#8B2635]/50 dark:ring-[#D4846A]/50 animate-ping'
                             : isFilled
-                            ? 'bg-rose-400 shadow-sm shadow-rose-400/50'
-                            : 'bg-slate-200 dark:bg-slate-700/60 border border-slate-300 dark:border-white/10'
+                            ? 'bg-[#8B2635] dark:bg-[#D4846A] shadow-sm'
+                            : 'bg-transparent border border-[var(--border-color)]'
                         }
                       `}
                       title={isOldest ? 'Oldest mark (will vanish next)' : isFilled ? 'Active mark' : 'Available slot'}
@@ -176,8 +176,8 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
                   );
                 })}
               </div>
-              <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 mt-1">
-                {oMarksCount}/3 marks
+              <span className="text-[10px] font-display text-[var(--text-muted)] mt-1.5">
+                {oMarksCount}/3
               </span>
             </div>
           </div>

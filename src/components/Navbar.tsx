@@ -26,7 +26,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onNavigateHome,
 }) => {
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-slate-200 dark:border-white/5 bg-white/85 dark:bg-slate-950/80 backdrop-blur-xl transition-colors duration-200">
+    <header className="sticky top-0 z-40 w-full border-b border-[var(--border-color)] bg-[var(--bg-navbar)] backdrop-blur-xl transition-colors duration-300">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         {/* Logo & Brand */}
         <button
@@ -40,16 +40,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="h-8 sm:h-9 w-auto object-contain dark:invert transition-transform group-hover:scale-105"
           />
           <div>
-            <div className="flex items-center gap-2">
-              <span className="font-extrabold text-lg tracking-tight text-slate-900 dark:text-white">
+            <div className="flex items-center gap-2.5">
+              <span className="font-display font-bold text-lg tracking-[0.16em] text-[var(--text-primary)] transition-colors">
                 TRIPLE LOOP
               </span>
-              <span className="hidden sm:inline-block text-[10px] uppercase font-mono tracking-widest px-1.5 py-0.5 rounded bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
-                v1.0
+              <span className="hidden sm:inline-block text-[10px] uppercase font-display tracking-widest px-2 py-0.5 rounded border bg-[#B88931]/10 text-[#B88931] border-[#B88931]/30 dark:bg-[#8CA98F]/15 dark:text-[#8CA98F] dark:border-[#8CA98F]/30">
+                Vol. I
               </span>
             </div>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 hidden md:block font-medium -mt-0.5">
-              Three marks. One board.
+            <p className="text-[11px] font-body text-[var(--text-muted)] italic hidden md:block -mt-0.5">
+              Three marks. One board. Never stop thinking.
             </p>
           </div>
         </button>
@@ -59,61 +59,69 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Rules / How to play */}
           <button
             onClick={onOpenHowToPlay}
-            className="p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors focus-ring"
+            className="p-2 rounded-xl text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--btn-bg)] border border-transparent hover:border-[var(--border-color)] transition-all focus-ring"
             title="How to Play"
             aria-label="How to play rules"
           >
-            <HelpCircle className="w-5 h-5" />
+            <HelpCircle className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
 
           {/* Sound Toggle */}
           <button
             onClick={onToggleSound}
-            className="p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors focus-ring"
+            className="p-2 rounded-xl text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--btn-bg)] border border-transparent hover:border-[var(--border-color)] transition-all focus-ring"
             title={isMuted ? 'Unmute sound' : 'Mute sound'}
             aria-label={isMuted ? 'Unmute sound' : 'Mute sound'}
           >
-            {isMuted ? <VolumeX className="w-5 h-5 text-rose-500 dark:text-rose-400" /> : <Volume2 className="w-5 h-5 text-sky-600 dark:text-sky-400" />}
+            {isMuted ? (
+              <VolumeX className="w-4 h-4 sm:w-5 sm:h-5 text-[#8B2635] dark:text-[#D4846A]" />
+            ) : (
+              <Volume2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#B88931] dark:text-[#8CA98F]" />
+            )}
           </button>
 
-          {/* Theme Toggle */}
+          {/* Theme Toggle (Academia Light vs Botanical Dark) */}
           <button
             onClick={onToggleTheme}
-            className="p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors focus-ring"
-            title={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
-            aria-label="Toggle theme"
+            className="p-2 rounded-xl text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--btn-bg)] border border-transparent hover:border-[var(--border-color)] transition-all focus-ring"
+            title={isDark ? 'Switch to Academia Light' : 'Switch to Botanical Dark'}
+            aria-label="Toggle aesthetic theme"
           >
-            {isDark ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />}
+            {isDark ? (
+              <Sun className="w-4 h-4 sm:w-5 sm:h-5 text-[#B88931] hover:rotate-45 transition-transform" />
+            ) : (
+              <Moon className="w-4 h-4 sm:w-5 sm:h-5 text-[#8CA98F] hover:-rotate-12 transition-transform" />
+            )}
           </button>
 
           {/* Settings */}
           <button
             onClick={onOpenSettings}
-            className="p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors focus-ring"
+            className="p-2 rounded-xl text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--btn-bg)] border border-transparent hover:border-[var(--border-color)] transition-all focus-ring"
             title="Game Settings"
             aria-label="Open settings"
           >
-            <Settings className="w-5 h-5" />
+            <Settings className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
 
           {/* User Profile / Nickname Badge */}
           <button
             onClick={onOpenAuth}
-            className="flex items-center gap-2 ml-1 sm:ml-2 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/5 hover:bg-slate-200/70 dark:hover:bg-white/10 hover:border-slate-300 dark:hover:border-white/20 transition-all focus-ring text-left"
+            className="flex items-center gap-2.5 ml-1 sm:ml-2 px-3 py-1.5 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] hover:border-[var(--accent-primary)] transition-all shadow-sm focus-ring text-left"
             aria-label={`Profile: ${profile.username}`}
           >
-            <div className="w-6 h-6 rounded-lg bg-sky-500/20 text-sky-600 dark:text-sky-300 flex items-center justify-center font-bold text-xs">
+            <div className="w-6 h-6 rounded-lg bg-[#B88931]/15 text-[#B88931] dark:bg-[#8CA98F]/20 dark:text-[#8CA98F] font-display flex items-center justify-center font-bold text-xs">
               {profile.username.charAt(0).toUpperCase()}
             </div>
             <div className="hidden sm:block">
-              <div className="text-xs font-semibold text-slate-800 dark:text-slate-200 truncate max-w-[100px]">
+              <div className="text-xs font-heading font-medium text-[var(--text-primary)] truncate max-w-[100px]">
                 {profile.username}
               </div>
-              <div className="text-[10px] text-slate-500 dark:text-slate-400">
-                {profile.isGuest ? 'Guest' : 'Account'}
+              <div className="text-[10px] font-body text-[var(--text-muted)] italic">
+                {profile.isGuest ? 'Scholar / Guest' : 'Member'}
               </div>
             </div>
-            <User className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 sm:hidden" />
+            <User className="w-3.5 h-3.5 text-[var(--text-muted)] sm:hidden" />
           </button>
         </div>
       </div>

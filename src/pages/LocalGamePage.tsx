@@ -112,28 +112,28 @@ export const LocalGamePage: React.FC<LocalGamePageProps> = ({
       <div className="flex items-center justify-between w-full">
         <button
           onClick={onReturnToMenu}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-xs font-semibold transition-colors focus-ring"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] hover:border-[var(--accent-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-xs font-display transition-all focus-ring shadow-sm"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Menu</span>
         </button>
 
         {/* Local Round Series Scores */}
-        <div className="flex items-center gap-2 text-xs font-mono bg-white dark:bg-white/5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-white/5 shadow-sm dark:shadow-none">
-          <span className="text-sky-600 dark:text-sky-400 font-bold">{playerXName}: {scores.X}</span>
-          <span className="text-slate-400 dark:text-slate-500">•</span>
-          <span className="text-rose-600 dark:text-rose-400 font-bold">{playerOName}: {scores.O}</span>
+        <div className="flex items-center gap-2.5 text-xs font-display px-3.5 py-1.5 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] shadow-sm">
+          <span className="text-[var(--player-x)] font-bold">{playerXName}: {scores.X}</span>
+          <span className="text-[var(--border-color)]">•</span>
+          <span className="text-[var(--player-o)] font-bold">{playerOName}: {scores.O}</span>
           {scores.draws > 0 && (
             <>
-              <span className="text-slate-400 dark:text-slate-500">•</span>
-              <span className="text-amber-600 dark:text-amber-400 font-semibold">Draws: {scores.draws}</span>
+              <span className="text-[var(--border-color)]">•</span>
+              <span className="text-[var(--text-muted)] font-serif italic">Draws: {scores.draws}</span>
             </>
           )}
         </div>
 
         <button
           onClick={handleRestart}
-          className="p-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors focus-ring"
+          className="p-2 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] hover:border-[var(--accent-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all focus-ring shadow-sm"
           title="Restart match"
           aria-label="Restart match"
         >

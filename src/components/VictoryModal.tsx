@@ -26,13 +26,13 @@ export const VictoryModal: React.FC<VictoryModalProps> = ({
 }) => {
   useEffect(() => {
     if (status === 'won') {
-      // Trigger festive confetti blast
+      // Trigger festive classical confetti blast in brass, crimson, sage, and terracotta
       try {
         confetti({
-          particleCount: 80,
-          spread: 70,
+          particleCount: 90,
+          spread: 75,
           origin: { y: 0.6 },
-          colors: ['#38bdf8', '#f43f5e', '#34d399', '#fbbf24'],
+          colors: ['#C9A962', '#8B2635', '#8CA98F', '#D4846A', '#F6F1EA'],
         });
       } catch {
         // Confetti fallback
@@ -44,18 +44,18 @@ export const VictoryModal: React.FC<VictoryModalProps> = ({
   const winnerName = winner === 'X' ? playerXName : playerOName;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 dark:bg-slate-950/80 backdrop-blur-md animate-fade-in">
-      <div className="relative w-full max-w-sm p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/15 shadow-2xl text-center space-y-6 animate-scale-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#1C1714]/60 dark:bg-[#0E1410]/80 backdrop-blur-md animate-fade-in">
+      <div className="relative w-full max-w-sm p-6 sm:p-8 rounded-3xl bg-[var(--bg-modal)] border-2 border-[var(--border-color)] shadow-2xl text-center space-y-6 animate-scale-in">
         {/* Glow effect */}
         <div
           className={`
-            absolute -top-12 left-1/2 -translate-x-1/2 w-28 h-28 rounded-full blur-2xl pointer-events-none
+            absolute -top-12 left-1/2 -translate-x-1/2 w-32 h-32 rounded-full blur-2xl pointer-events-none
             ${
               isDraw
-                ? 'bg-amber-500/20'
+                ? 'bg-[#B88931]/15 dark:bg-[#8CA98F]/15'
                 : winner === 'X'
-                ? 'bg-sky-500/30'
-                : 'bg-rose-500/30'
+                ? 'bg-[#B88931]/25 dark:bg-[#8CA98F]/25'
+                : 'bg-[#8B2635]/25 dark:bg-[#D4846A]/25'
             }
           `}
         />
@@ -64,13 +64,13 @@ export const VictoryModal: React.FC<VictoryModalProps> = ({
         <div className="flex flex-col items-center gap-3">
           <div
             className={`
-              w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl
+              w-16 h-16 rounded-2xl flex items-center justify-center shadow-md
               ${
                 isDraw
-                  ? 'bg-amber-500/20 text-amber-500 dark:text-amber-400 border border-amber-500/30'
+                  ? 'bg-[var(--bg-secondary)] text-[var(--accent-primary)] border border-[var(--border-color)]'
                   : winner === 'X'
-                  ? 'bg-sky-500/20 text-sky-500 dark:text-sky-400 border border-sky-500/30'
-                  : 'bg-rose-500/20 text-rose-500 dark:text-rose-400 border border-rose-500/30'
+                  ? 'bg-[#B88931]/15 text-[#B88931] dark:bg-[#8CA98F]/20 dark:text-[#8CA98F] border border-[#B88931]/30 dark:border-[#8CA98F]/30'
+                  : 'bg-[#8B2635]/15 text-[#8B2635] dark:bg-[#D4846A]/20 dark:text-[#D4846A] border border-[#8B2635]/30 dark:border-[#D4846A]/30'
               }
             `}
           >
@@ -78,27 +78,27 @@ export const VictoryModal: React.FC<VictoryModalProps> = ({
           </div>
 
           <div>
-            <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white">
-              {isDraw ? 'Tactical Draw' : `${winnerName} Wins!`}
+            <h2 className="text-3xl font-heading font-medium tracking-tight text-[var(--text-primary)]">
+              {isDraw ? 'Tactical Accord' : `${winnerName} Prevails!`}
             </h2>
-            <p className="text-xs font-medium text-slate-500 dark:text-slate-400 mt-1">
+            <p className="text-xs sm:text-sm font-body text-[var(--text-secondary)] italic mt-1.5 leading-relaxed">
               {isDraw
-                ? 'Both players agreed to a mutual draw.'
-                : `Victory achieved in ${moveCount} strategic moves.`}
+                ? 'Both tacticians concluded in mutual accord.'
+                : `Victory inscribed after ${moveCount} strategic placements.`}
             </p>
           </div>
         </div>
 
         {/* Stats summary badge */}
-        <div className="flex items-center justify-around py-3 px-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 text-xs">
+        <div className="flex items-center justify-around py-3 px-4 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)] text-xs">
           <div>
-            <span className="text-slate-500 dark:text-slate-400 block text-[10px] uppercase font-mono">Moves</span>
-            <span className="font-bold text-slate-900 dark:text-white text-sm">{moveCount}</span>
+            <span className="text-[var(--text-muted)] block text-[9px] uppercase font-display tracking-widest">Placements</span>
+            <span className="font-heading font-bold text-[var(--text-primary)] text-lg">{moveCount}</span>
           </div>
-          <div className="w-px h-6 bg-slate-200 dark:bg-white/10" />
+          <div className="w-px h-6 bg-[var(--border-color)]" />
           <div>
-            <span className="text-slate-500 dark:text-slate-400 block text-[10px] uppercase font-mono">Rule</span>
-            <span className="font-bold text-sky-500 dark:text-sky-400 text-sm">3-Mark Loop</span>
+            <span className="text-[var(--text-muted)] block text-[9px] uppercase font-display tracking-widest">Discipline</span>
+            <span className="font-heading font-bold text-[var(--accent-primary)] text-lg">3-Mark Loop</span>
           </div>
         </div>
 
@@ -106,12 +106,12 @@ export const VictoryModal: React.FC<VictoryModalProps> = ({
         <div className="space-y-2.5 pt-2">
           <button
             onClick={onRematch}
-            className="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-sky-500/25 transition-all transform active:scale-95 focus-ring"
+            className="w-full py-3.5 px-4 rounded-xl brass-gradient dark:bg-[#8CA98F] dark:text-[#131914] font-display font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-md transition-all transform active:scale-95 focus-ring"
           >
             {isRematchRequested ? (
               <>
-                <Zap className="w-4 h-4 text-amber-300 animate-bounce" />
-                <span>Rematch Accepted!</span>
+                <Zap className="w-4 h-4 text-[#1C1714] animate-bounce" />
+                <span>Rematch Bound!</span>
               </>
             ) : (
               <>
@@ -123,10 +123,10 @@ export const VictoryModal: React.FC<VictoryModalProps> = ({
 
           <button
             onClick={onReturnToMenu}
-            className="w-full py-3 px-4 rounded-2xl bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white font-semibold text-xs flex items-center justify-center gap-2 transition-all focus-ring"
+            className="w-full py-3 px-4 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] hover:border-[var(--accent-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-display text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-all focus-ring shadow-sm"
           >
-            <Home className="w-4 h-4 text-slate-500 dark:text-slate-400" />
-            <span>Return to Menu</span>
+            <Home className="w-4 h-4 text-[var(--text-muted)]" />
+            <span>Return to Concourse</span>
           </button>
         </div>
       </div>
