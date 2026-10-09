@@ -65,8 +65,8 @@ export const Cell: React.FC<CellProps> = ({
           isWinningCell
             ? 'bg-emerald-500/20 border-2 border-emerald-400 shadow-lg shadow-emerald-500/30 scale-[1.03] z-20'
             : value
-            ? 'bg-slate-900/90 border border-white/10 hover:border-white/20'
-            : 'bg-slate-900/40 border border-white/5 hover:border-white/15 hover:bg-slate-900/80 active:scale-95'
+            ? 'bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20 shadow-sm dark:shadow-none'
+            : 'bg-slate-100/70 dark:bg-slate-900/40 border border-slate-200 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/15 hover:bg-slate-200/50 dark:hover:bg-slate-900/80 active:scale-95'
         }
       `}
     >
@@ -115,12 +115,12 @@ export const Cell: React.FC<CellProps> = ({
       {!value && isHovered && isActiveTurn && !disabled && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30 transition-opacity">
           {currentTurn === 'X' ? (
-            <svg className="w-3/5 h-3/5 text-sky-400" viewBox="0 0 100 100" fill="none">
+            <svg className="w-3/5 h-3/5 text-sky-500 dark:text-sky-400" viewBox="0 0 100 100" fill="none">
               <line x1="20" y1="20" x2="80" y2="80" stroke="currentColor" strokeWidth="12" strokeLinecap="round" />
               <line x1="80" y1="20" x2="20" y2="80" stroke="currentColor" strokeWidth="12" strokeLinecap="round" />
             </svg>
           ) : (
-            <svg className="w-3/5 h-3/5 text-rose-400" viewBox="0 0 100 100" fill="none">
+            <svg className="w-3/5 h-3/5 text-rose-500 dark:text-rose-400" viewBox="0 0 100 100" fill="none">
               <circle cx="50" cy="50" r="34" stroke="currentColor" strokeWidth="12" />
             </svg>
           )}
@@ -131,12 +131,12 @@ export const Cell: React.FC<CellProps> = ({
       {value && markOrderInfo && (
         <div className="absolute bottom-2 right-2 flex items-center gap-1 z-10">
           {markOrderInfo.isOldest ? (
-            <span className="flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 animate-pulse">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
+            <span className="flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/20 text-amber-600 dark:text-amber-300 border border-amber-500/30 animate-pulse">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 dark:bg-amber-400 animate-ping" />
               1st
             </span>
           ) : (
-            <span className="px-1.5 py-0.5 rounded-md text-[10px] font-mono font-medium bg-white/5 text-slate-400 border border-white/5">
+            <span className="px-1.5 py-0.5 rounded-md text-[10px] font-mono font-medium bg-slate-200 dark:bg-white/5 text-slate-700 dark:text-slate-400 border border-slate-300 dark:border-white/5">
               {markOrderInfo.order}#
             </span>
           )}
@@ -144,7 +144,7 @@ export const Cell: React.FC<CellProps> = ({
       )}
 
       {/* Cell Index Label (subtle in corner for accessibility & keyboard users) */}
-      <span className="absolute top-1.5 left-2 text-[10px] font-mono text-slate-600 select-none">
+      <span className="absolute top-1.5 left-2 text-[10px] font-mono text-slate-400 dark:text-slate-600 select-none">
         {index + 1}
       </span>
     </button>

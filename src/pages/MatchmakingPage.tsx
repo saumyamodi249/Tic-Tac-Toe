@@ -273,13 +273,13 @@ export const MatchmakingPage: React.FC<MatchmakingPageProps> = ({
       <div className="flex items-center justify-between w-full">
         <button
           onClick={handleCancelSearch}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white text-xs font-semibold transition-colors focus-ring"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-xs font-semibold transition-colors focus-ring"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Menu</span>
         </button>
 
-        <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-[11px] font-mono text-indigo-400">
+        <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-[11px] font-mono text-indigo-600 dark:text-indigo-400">
           <Globe className="w-3.5 h-3.5" />
           <span>Global Matchmaking</span>
         </div>
@@ -289,14 +289,14 @@ export const MatchmakingPage: React.FC<MatchmakingPageProps> = ({
 
       {/* Error Banner */}
       {errorMsg && (
-        <div className="w-full p-3.5 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-center justify-between gap-2">
+        <div className="w-full p-3.5 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-600 dark:text-rose-300 text-xs flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 flex-shrink-0 text-rose-400" />
+            <AlertCircle className="w-4 h-4 flex-shrink-0 text-rose-500 dark:text-rose-400" />
             <span>{errorMsg}</span>
           </div>
           <button
             onClick={() => setErrorMsg(null)}
-            className="text-slate-400 hover:text-white text-xs font-bold"
+            className="text-slate-400 hover:text-slate-900 dark:hover:text-white text-xs font-bold"
           >
             ✕
           </button>
@@ -305,28 +305,28 @@ export const MatchmakingPage: React.FC<MatchmakingPageProps> = ({
 
       {/* 1. SEARCHING RADAR SCREEN */}
       {status === 'searching' && (
-        <div className="w-full max-w-md p-8 sm:p-10 rounded-3xl bg-slate-900 border border-white/10 text-center space-y-8 my-auto animate-scale-in">
+        <div className="w-full max-w-md p-8 sm:p-10 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-xl dark:shadow-none text-center space-y-8 my-auto animate-scale-in">
           {/* Pulsing Concentric Radar */}
           <div className="relative w-36 h-36 mx-auto flex items-center justify-center">
             <div className="absolute inset-0 rounded-full border border-indigo-500/20 animate-ping [animation-duration:3s]" />
             <div className="absolute inset-4 rounded-full border border-indigo-500/30 animate-pulse" />
             <div className="absolute inset-8 rounded-full border border-indigo-500/40" />
-            <div className="w-14 h-14 rounded-2xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center shadow-xl shadow-indigo-500/20">
-              <Radio className="w-7 h-7 animate-pulse text-indigo-300" />
+            <div className="w-14 h-14 rounded-2xl bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shadow-xl shadow-indigo-500/20">
+              <Radio className="w-7 h-7 animate-pulse text-indigo-500 dark:text-indigo-300" />
             </div>
           </div>
 
           <div>
-            <h2 className="text-2xl font-black text-white tracking-tight">Finding Opponent</h2>
-            <p className="text-xs text-slate-400 mt-1">Scanning matchmaking pool for active tacticians...</p>
-            <div className="font-mono text-xl font-bold text-indigo-400 mt-3">
+            <h2 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Finding Opponent</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Scanning matchmaking pool for active tacticians...</p>
+            <div className="font-mono text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-3">
               {formatTimer(elapsedSeconds)}
             </div>
           </div>
 
           <button
             onClick={handleCancelSearch}
-            className="w-full py-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white font-semibold text-xs flex items-center justify-center gap-2 transition-all focus-ring"
+            className="w-full py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white font-semibold text-xs flex items-center justify-center gap-2 transition-all focus-ring"
           >
             <X className="w-4 h-4" />
             <span>Cancel Search</span>
@@ -336,12 +336,12 @@ export const MatchmakingPage: React.FC<MatchmakingPageProps> = ({
 
       {/* 2. MATCH FOUND BANNER */}
       {status === 'matched' && (
-        <div className="w-full max-w-md p-8 rounded-3xl bg-slate-900 border border-emerald-500/30 text-center space-y-4 my-auto animate-scale-in">
-          <div className="w-14 h-14 rounded-2xl bg-emerald-500/20 text-emerald-400 mx-auto flex items-center justify-center">
+        <div className="w-full max-w-md p-8 rounded-3xl bg-white dark:bg-slate-900 border border-emerald-500/30 shadow-xl dark:shadow-none text-center space-y-4 my-auto animate-scale-in">
+          <div className="w-14 h-14 rounded-2xl bg-emerald-500/20 text-emerald-500 dark:text-emerald-400 mx-auto flex items-center justify-center">
             <Zap className="w-7 h-7 animate-bounce" />
           </div>
-          <h2 className="text-2xl font-black text-white">Match Found!</h2>
-          <p className="text-xs text-slate-300">Initializing tactical board...</p>
+          <h2 className="text-2xl font-black text-slate-900 dark:text-white">Match Found!</h2>
+          <p className="text-xs text-slate-600 dark:text-slate-300">Initializing tactical board...</p>
         </div>
       )}
 

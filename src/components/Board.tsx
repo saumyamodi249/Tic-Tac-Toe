@@ -46,7 +46,7 @@ export const Board: React.FC<BoardProps> = ({
   }, [isBoardInteractive, gameState.board, onCellClick]);
 
   return (
-    <div className="relative w-full max-w-[360px] sm:max-w-[420px] aspect-square mx-auto p-3 sm:p-4 rounded-3xl bg-slate-950/60 border border-white/10 shadow-2xl backdrop-blur-xl">
+    <div className="relative w-full max-w-[360px] sm:max-w-[420px] aspect-square mx-auto p-3 sm:p-4 rounded-3xl bg-white/80 dark:bg-slate-950/60 border border-slate-200 dark:border-white/10 shadow-xl dark:shadow-2xl backdrop-blur-xl transition-colors duration-200">
       {/* Background ambient gradient glow */}
       <div className="absolute -inset-1 rounded-[2rem] bg-gradient-to-tr from-sky-500/10 via-transparent to-rose-500/10 -z-10 blur-xl pointer-events-none" />
 

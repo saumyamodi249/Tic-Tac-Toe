@@ -44,8 +44,8 @@ export const VictoryModal: React.FC<VictoryModalProps> = ({
   const winnerName = winner === 'X' ? playerXName : playerOName;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in">
-      <div className="relative w-full max-w-sm p-6 sm:p-8 rounded-3xl bg-slate-900 border border-white/15 shadow-2xl text-center space-y-6 animate-scale-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 dark:bg-slate-950/80 backdrop-blur-md animate-fade-in">
+      <div className="relative w-full max-w-sm p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/15 shadow-2xl text-center space-y-6 animate-scale-in">
         {/* Glow effect */}
         <div
           className={`
@@ -67,10 +67,10 @@ export const VictoryModal: React.FC<VictoryModalProps> = ({
               w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl
               ${
                 isDraw
-                  ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
+                  ? 'bg-amber-500/20 text-amber-500 dark:text-amber-400 border border-amber-500/30'
                   : winner === 'X'
-                  ? 'bg-sky-500/20 text-sky-400 border border-sky-500/30'
-                  : 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
+                  ? 'bg-sky-500/20 text-sky-500 dark:text-sky-400 border border-sky-500/30'
+                  : 'bg-rose-500/20 text-rose-500 dark:text-rose-400 border border-rose-500/30'
               }
             `}
           >
@@ -78,10 +78,10 @@ export const VictoryModal: React.FC<VictoryModalProps> = ({
           </div>
 
           <div>
-            <h2 className="text-2xl font-black tracking-tight text-white">
+            <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white">
               {isDraw ? 'Tactical Draw' : `${winnerName} Wins!`}
             </h2>
-            <p className="text-xs font-medium text-slate-400 mt-1">
+            <p className="text-xs font-medium text-slate-500 dark:text-slate-400 mt-1">
               {isDraw
                 ? 'Both players agreed to a mutual draw.'
                 : `Victory achieved in ${moveCount} strategic moves.`}
@@ -90,15 +90,15 @@ export const VictoryModal: React.FC<VictoryModalProps> = ({
         </div>
 
         {/* Stats summary badge */}
-        <div className="flex items-center justify-around py-3 px-4 rounded-2xl bg-white/5 border border-white/5 text-xs">
+        <div className="flex items-center justify-around py-3 px-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 text-xs">
           <div>
-            <span className="text-slate-400 block text-[10px] uppercase font-mono">Moves</span>
-            <span className="font-bold text-white text-sm">{moveCount}</span>
+            <span className="text-slate-500 dark:text-slate-400 block text-[10px] uppercase font-mono">Moves</span>
+            <span className="font-bold text-slate-900 dark:text-white text-sm">{moveCount}</span>
           </div>
-          <div className="w-px h-6 bg-white/10" />
+          <div className="w-px h-6 bg-slate-200 dark:bg-white/10" />
           <div>
-            <span className="text-slate-400 block text-[10px] uppercase font-mono">Rule</span>
-            <span className="font-bold text-sky-400 text-sm">3-Mark Loop</span>
+            <span className="text-slate-500 dark:text-slate-400 block text-[10px] uppercase font-mono">Rule</span>
+            <span className="font-bold text-sky-500 dark:text-sky-400 text-sm">3-Mark Loop</span>
           </div>
         </div>
 
@@ -123,9 +123,9 @@ export const VictoryModal: React.FC<VictoryModalProps> = ({
 
           <button
             onClick={onReturnToMenu}
-            className="w-full py-3 px-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white font-semibold text-xs flex items-center justify-center gap-2 transition-all focus-ring"
+            className="w-full py-3 px-4 rounded-2xl bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white font-semibold text-xs flex items-center justify-center gap-2 transition-all focus-ring"
           >
-            <Home className="w-4 h-4 text-slate-400" />
+            <Home className="w-4 h-4 text-slate-500 dark:text-slate-400" />
             <span>Return to Menu</span>
           </button>
         </div>

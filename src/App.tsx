@@ -42,15 +42,19 @@ export function App() {
     return () => unsubscribe();
   }, []);
 
-  // Sync theme class to document root
+  // Sync theme class and attribute to document root
   useEffect(() => {
     const root = document.documentElement;
     if (isDark) {
       root.classList.add('dark');
       root.classList.remove('light');
+      root.setAttribute('data-theme', 'dark');
+      root.style.colorScheme = 'dark';
     } else {
       root.classList.remove('dark');
       root.classList.add('light');
+      root.setAttribute('data-theme', 'light');
+      root.style.colorScheme = 'light';
     }
     try {
       localStorage.setItem('triple_loop_theme', isDark ? 'dark' : 'light');
@@ -75,7 +79,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 dark:bg-slate-950 dark:text-slate-100 light:bg-slate-50 light:text-slate-900 transition-colors duration-200">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-200">
       {/* Top Navigation */}
       <Navbar
         profile={profile}
