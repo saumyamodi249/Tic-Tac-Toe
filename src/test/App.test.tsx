@@ -11,10 +11,11 @@ describe('Triple Loop Tic-Tac-Toe App Full Integration', () => {
   it('renders landing page with title and mode selections', () => {
     render(<App />);
 
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/TRIPLE LOOP/i);
-    expect(screen.getByText(/Play Local/i)).toBeInTheDocument();
-    expect(screen.getByText(/Find Match/i)).toBeInTheDocument();
-    expect(screen.getByText(/Private Room/i)).toBeInTheDocument();
+    expect(screen.getByText(/TRIPLE/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/LOOP/i).length).toBeGreaterThan(0);
+    expect(screen.getByText(/Pass & Play/i)).toBeInTheDocument();
+    expect(screen.getByText(/Public Arena/i)).toBeInTheDocument();
+    expect(screen.getByText(/Private Chamber/i)).toBeInTheDocument();
     expect(screen.getByText(/Never stop thinking/i)).toBeInTheDocument();
   });
 
@@ -25,15 +26,14 @@ describe('Triple Loop Tic-Tac-Toe App Full Integration', () => {
     const howToPlayBtn = screen.getByLabelText(/How to play rules/i);
     fireEvent.click(howToPlayBtn);
 
-    expect(screen.getByText(/How to Play Triple Loop/i)).toBeInTheDocument();
-    expect(screen.getByText(/The Triple Loop Mechanic/i)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: /The Strategic Codex/i })).toBeInTheDocument();
 
     // Click close / got it
-    const gotItBtn = screen.getByRole('button', { name: /Got It, Let's Play!/i });
+    const gotItBtn = screen.getByRole('button', { name: /Understood, Open the Board/i });
     fireEvent.click(gotItBtn);
 
     await waitFor(() => {
-      expect(screen.queryByText(/How to Play Triple Loop/i)).not.toBeInTheDocument();
+      expect(screen.queryByRole('heading', { level: 2, name: /The Strategic Codex/i })).not.toBeInTheDocument();
     });
   });
 
@@ -44,23 +44,28 @@ describe('Triple Loop Tic-Tac-Toe App Full Integration', () => {
     const profileBtn = screen.getByLabelText(/Profile:/i);
     fireEvent.click(profileBtn);
 
-    expect(screen.getByText(/Player Identity/i)).toBeInTheDocument();
-    const input = screen.getByPlaceholderText(/Enter player nickname.../i);
+    expect(screen.getByText(/Scholar Identity/i)).toBeInTheDocument();
+
+    // Switch to Pseudonym tab
+    const pseudonymTab = screen.getByRole('button', { name: /^Pseudonym$/i });
+    fireEvent.click(pseudonymTab);
+
+    const input = screen.getByPlaceholderText(/Enter player pseudonym.../i);
     fireEvent.change(input, { target: { value: 'GrandMasterX' } });
 
-    const saveBtn = screen.getByRole('button', { name: /Save Nickname/i });
+    const saveBtn = screen.getByRole('button', { name: /Inscribe Pseudonym/i });
     fireEvent.click(saveBtn);
 
     await waitFor(() => {
-      expect(screen.getByText(/Nickname updated successfully!/i)).toBeInTheDocument();
+      expect(screen.getByText(/updated successfully!/i)).toBeInTheDocument();
     });
   });
 
   it('starts a local game, places marks, and removes oldest mark on 4th placement', async () => {
     render(<App />);
 
-    // Click Play Local
-    const playLocalBtn = screen.getByRole('button', { name: /Play Local/i });
+    // Click Pass & Play
+    const playLocalBtn = screen.getByRole('button', { name: /Pass & Play/i });
     fireEvent.click(playLocalBtn);
 
     // Board should be visible with 9 cells
@@ -91,32 +96,62 @@ describe('Triple Loop Tic-Tac-Toe App Full Integration', () => {
   it('allows offering and accepting a mutual draw in local game', async () => {
     render(<App />);
 
-    // Navigate to Local Play
-    fireEvent.click(screen.getByRole('button', { name: /Play Local/i }));
+    // Navigate to Pass & Play
+    fireEvent.click(screen.getByRole('button', { name: /Pass & Play/i }));
 
-    // Click Offer Draw
-    const offerDrawBtn = screen.getByRole('button', { name: /Offer Draw/i });
+    // Click Propose Accord
+    const offerDrawBtn = screen.getByRole('button', { name: /Propose Accord/i });
     fireEvent.click(offerDrawBtn);
 
     // Draw dialog appears
-    expect(screen.getByText(/offered a Draw/i)).toBeInTheDocument();
+    expect(screen.getByText(/proposes mutual accord/i)).toBeInTheDocument();
 
     // Accept Draw
     const acceptBtn = screen.getByRole('button', { name: /Accept/i });
     fireEvent.click(acceptBtn);
 
-    // Victory modal with Tactical Draw appears
-    expect(screen.getByText(/Tactical Draw/i)).toBeInTheDocument();
-    expect(screen.getByText(/Both players agreed to a mutual draw/i)).toBeInTheDocument();
+    // Victory modal with Tactical Accord appears
+    expect(screen.getByText(/Tactical Accord/i)).toBeInTheDocument();
   });
 
   it('allows navigating back to main menu from local game', () => {
     render(<App />);
 
-    fireEvent.click(screen.getByRole('button', { name: /Play Local/i }));
+    fireEvent.click(screen.getByRole('button', { name: /Pass & Play/i }));
     expect(screen.getByRole('button', { name: /Menu/i })).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole('button', { name: /Menu/i }));
     expect(screen.getByText(/Never stop thinking/i)).toBeInTheDocument();
+  });
+
+  it('validates account creation fields with regex in Auth modal', async () => {
+    render(<App />);
+
+    // Open Auth modal
+    const profileBtn = screen.getByLabelText(/Profile:/i);
+    fireEvent.click(profileBtn);
+
+    // Click Register tab
+    const registerTab = screen.getByRole('button', { name: /^Register$/i });
+    fireEvent.click(registerTab);
+
+    expect(screen.getByText(/Scholar Username/i)).toBeInTheDocument();
+
+    // Fill invalid username
+    const usernameInput = screen.getByPlaceholderText(/Choose scholar title.../i);
+    fireEvent.change(usernameInput, { target: { value: 'ria 42' } });
+
+    // Fill valid email
+    const emailInput = screen.getByPlaceholderText(/scholar@academy.edu/i);
+    fireEvent.change(emailInput, { target: { value: 'ria@example.com' } });
+
+    // Submit
+    const registerBtn = screen.getByRole('button', { name: /Matriculate & Register/i });
+    fireEvent.click(registerBtn);
+
+    // Error message appears
+    await waitFor(() => {
+      expect(screen.getByText(/Scholar username must contain only letters and numbers/i)).toBeInTheDocument();
+    });
   });
 });

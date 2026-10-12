@@ -1,6 +1,7 @@
 import React from 'react';
 import { Volume2, VolumeX, Moon, Sun, User, Settings, HelpCircle } from 'lucide-react';
 import { UserProfile } from '../services/auth';
+import { AvatarIcon } from './AvatarIcon';
 
 interface NavbarProps {
   profile: UserProfile;
@@ -118,7 +119,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             aria-label={`Profile: ${profile.username}`}
           >
             <div className="w-6 h-6 rounded-lg bg-[#B88931]/15 text-[#B88931] dark:bg-[#8CA98F]/20 dark:text-[#8CA98F] font-display flex items-center justify-center font-bold text-xs">
-              {profile.username.charAt(0).toUpperCase()}
+              <AvatarIcon avatar={profile.avatar} fallbackText={profile.username} className="w-3.5 h-3.5" />
             </div>
             <div className="hidden sm:block">
               <div className="text-xs font-heading font-medium text-[var(--text-primary)] truncate max-w-[100px]">

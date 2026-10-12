@@ -10,12 +10,17 @@ create table if not exists public.profiles (
   id uuid primary key default gen_random_uuid(),
   username text not null,
   is_guest boolean not null default true,
+  avatar text default 'crown',
   avatar_url text,
   games_played int not null default 0,
   games_won int not null default 0,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+-- Migration safety for existing tables
+alter table public.profiles add column if not exists avatar text default 'crown';
+alter table public.profiles add column if not exists avatar_url text;
 
 -- 2. ROOMS TABLE
 create table if not exists public.rooms (
